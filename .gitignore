@@ -1,2 +1,9 @@
 # ignore the virtual environment
 venv
+
+# config file for secrets
+config.py
+
+# general python
+__pycache__
+

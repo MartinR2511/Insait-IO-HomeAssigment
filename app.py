@@ -1,5 +1,8 @@
 from flask import Flask, request
+from OpenAIClient import OpenAIClient
+import config
 
+AIClient = OpenAIClient(config.OPEN_AI_SECRET_KEY)
 app = Flask(__name__)
 
 @app.route("/ask", methods=["POST"])
@@ -11,9 +14,8 @@ def ask():
     if 'question' in request_data:
         # get question
         question = request_data['question']
-        print(question)
-        # TODO: send to OPENAI API
-        # TODO: get answer from OPENAI API
+        answer = AIClient.ask(question)
+        print(question, answer)
         # TODO: save question and answer to DB 
         
     # dont return anything as it was not specified in the assignment
