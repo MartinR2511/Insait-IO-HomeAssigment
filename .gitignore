@@ -7,3 +7,5 @@ config.py
 # general python
 __pycache__
 
+# postgres data
+./postgresDB/data

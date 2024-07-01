@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: insait
+      POSTGRES_PASSWORD: reallystrongpassword
+      POSTGRES_DB: homeassigmentdb
+    volumes:
+      - ./postgresDB/data:/var/lib/postgresql/data
+      - ./postgresDB/database.sql:/docker-entrypoint-initdb.d/database.sql #execute sql script on container start
+    ports:
+      - 5432:5432
+
