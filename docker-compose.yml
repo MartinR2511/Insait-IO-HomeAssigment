@@ -13,3 +13,9 @@ services:
     ports:
       - 5432:5432
 
+  flaskapp:
+    build: ./flaskServer
+    ports:
+      - 5000:5000
+    depends_on:
+      - db
