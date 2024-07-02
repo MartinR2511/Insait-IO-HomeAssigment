@@ -9,7 +9,6 @@ services:
       POSTGRES_DB: homeassigmentdb
     volumes:
       - ./postgresDB/data:/var/lib/postgresql/data
-      - ./postgresDB/database.sql:/docker-entrypoint-initdb.d/database.sql #execute sql script on container start
     ports:
       - 5432:5432
 
