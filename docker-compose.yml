@@ -8,12 +8,12 @@ services:
       POSTGRES_PASSWORD: reallystrongpassword
       POSTGRES_DB: homeassigmentdb
     volumes:
-      - ./postgresDB/data:/var/lib/postgresql/data
+      - ./db/data:/var/lib/postgresql/data
     ports:
       - 5432:5432
 
   flaskapp:
-    build: ./flaskServer
+    build: ./flaskapp
     ports:
       - 5000:5000
     depends_on:

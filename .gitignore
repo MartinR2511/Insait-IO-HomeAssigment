@@ -8,4 +8,4 @@ config.py
 __pycache__
 
 # postgres data
-./postgresDB/data
+./db/data
