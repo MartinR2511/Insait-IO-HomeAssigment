@@ -1,54 +1,69 @@
-# Home Assignment for Senior Backend Developer
-## Task Overview
-Create a simple Flask server that exposes an endpoint to ask a question. The server sends the
-question to an OpenAI API, receives the answer, and saves both the question and the answer in
-a PostgreSQL database. The server and the database should be dockerized and run with
-Docker Compose. Implement one test using pytest.
-## Requirements
-1. Flask Server: Set up a Flask server with an endpoint to handle questions.
-2. OpenAI API Integration: Integrate the OpenAI API to get answers for the questions.
-3. Database: Use PostgreSQL to store questions and answers.
-4. Alembic: Use Alembic for database migrations.
-5. Docker: Dockerize the Flask server and the PostgreSQL database.
-6. Docker Compose: Use Docker Compose to manage and run the containers.
-7. Testing: Implement at least one test using pytest.
-8. GitHub Repository: Share the code via a GitHub repository with a clean structure and
-meaningful commit history.
-9. Best Practices for DAL: Implement best practices for Data Access Layer.
-## Instructions
-1. Flask Server:
-    * Create a Flask application.
-    * Create an endpoint /ask that accepts a POST request with a JSON payload
-containing the question.
+# Insait IO - Homeassigment
 
-2. OpenAI API:
-    * Use the OpenAI API to get an answer for the question.
-    * You can use the OpenAI Python client library for this. ( You can create an
-account and use the free tier )
+This project is for the home assigment given by Insaint IO.
+You can read about it in the file [ASSIGMENT.MD](ASSIGMENT.MD).
 
-3. Database:
-    * Set up a PostgreSQL database.
-    * Create the schema.
-    * Use SQLAlchemy for ORM. ( or any other ORM )
-    * Use Alembic for database migrations. ( or any other migration tool )
-4. Dockerization:
-    * Dockerize the Flask application.
-    * Dockerize the PostgreSQL database.
-    * Use Docker Compose to run both containers.    *
-5. Testing:
-    * Implement one test using pytest to ensure the endpoint works as expected.
-6. GitHub Repository:
-    * Maintain a clean directory structure.
-    * Ensure meaningful commit messages.
-    * Use branches if necessary and document your work in the README file.
+## Table of Contents
+- [Insait IO - Homeassigment](#insait-io---homeassigment)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [General Explanaition](#general-explanaition)
 
-## Deliverables
-* A link to the GitHub repository with the code
-    * The repo should include:
-        * Source code for the Flask server.
-        * Dockerfile for the Flask application.
-        * Dockerfile for the PostgreSQL database (or use an official PostgreSQL
-image).
-        * docker-compose.yml to manage the services.
-        * Alembic migration scripts.
-        * A pytest test file.
+## Installation
+To install the project, follow these steps:
+1. Clone the repository to your local machine:
+        ```
+        git clone https://github.com/MartinR2511/HomeAssigment.git
+        ```
+2. Navigate to the project directory:
+        ```
+        cd HomeAssigment
+        ```
+3. Create a virtual environment:
+        ```
+        python -m venv venv
+        ```
+4. Activate the virtual environment:
+      - On Windows:
+            ```
+            venv\Scripts\activate
+            ```
+     - On macOS and Linux:
+            ```
+            source venv/bin/activate
+            ```
+5. Install the project dependencies:
+        ```
+        pip install -r flaskapp/requirements.txt -r alembic/requirements.txt
+        ```
+6. Configure Project Secrets:
+   
+   insert all the secrets in [config.py](flaskapp/config.py)
+
+
+
+7. Start the project:
+
+        docker-compose build
+   
+        docker-compose up -d
+   
+        alembic upgrade head
+8. The project should now be up and running on your local machine.
+
+## Usage
+To test the functionality of the /ask endpoint, you have been provided a [manual-test.py](manual-test.py) file in the root of the repository. This file is intended to make it easier for you to manually test the endpoint and verify its functionality.
+
+To use the manual-test.py file, you can edit the question variable at line 6.
+then you can run the script and see the printed output.
+
+```
+python manual-tester.py
+```
+
+## General Explanaition
+* the flask app and the related files are located in the flaskapp/ folder.
+* the alembic migraition files are located in the alembic/ folder.
+* pytest test files are located in the flaskapp/tests/ folder.
+* i have used the lastest postgres image for the database container.
