@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class ChatAI(ABC):
+class AbstractAIClient(ABC):
     """
     Abstract base class for an AI chat.
 

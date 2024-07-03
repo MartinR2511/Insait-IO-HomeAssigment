@@ -1,7 +1,7 @@
 from openai import OpenAI
-from ChatAI import ChatAI
+from AIClients.AbstractAIClient import AbstractAIClient
 
-class OpenAIClient(ChatAI):
+class OpenAIClient(AbstractAIClient):
     """
     A client for interacting with the OpenAI API using the GPT-3.5 Turbo model.
 
