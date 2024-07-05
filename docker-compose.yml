@@ -3,17 +3,26 @@ services:
   db:
     image: postgres:latest
     restart: always
+    env_file: ".env"
     environment:
-      POSTGRES_USER: insait
-      POSTGRES_PASSWORD: reallystrongpassword
-      POSTGRES_DB: homeassigmentdb
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
     volumes:
       - ./db/data:/var/lib/postgresql/data
     ports:
-      - 5432:5432
+      - ${DB_PORT}:${DB_PORT}
 
   flaskapp:
     build: ./flaskapp
+    environment:
+        - OPEN_AI_SECRET_KEY=${OPEN_AI_SECRET_KEY}
+        - DB_PROTOCOL=${DB_PROTOCOL}
+        - DB_NAME=${DB_NAME}
+        - DB_PORT=${DB_PORT}
+        - DB_IPADDRESS=${DB_IPADDRESS}
+        - DB_USERNAME=${DB_USERNAME}
+        - DB_PASSWORD=${DB_PASSWORD}
     ports:
       - 5000:5000
     depends_on:
