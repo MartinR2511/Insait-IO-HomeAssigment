@@ -8,8 +8,10 @@ class Questions(db.Model):
     question = db.Column(db.String(4096), nullable=False)
     answer = db.Column(db.String(4096), nullable=False)
     timestamp = db.Column(db.DateTime, nullable = True)
+    ipaddress = db.Column(db.String(15), nullable = True)
 
-    def __init__(self, question, answer, timestamp):
+    def __init__(self, question, answer, timestamp, ipaddress):
         self.question = question
         self.answer = answer
         self.timestamp = timestamp
+        self.ipaddress = ipaddress

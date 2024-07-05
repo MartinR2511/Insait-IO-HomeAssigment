@@ -34,12 +34,13 @@ def ask():
 
     # get answer from AI
     answer = AIClient.ask(question)
-    row = Questions(question, answer, timestamp)
+    row = Questions(question, answer, timestamp, request.remote_addr)
 
     try:
         db.session.add(row)
         db.session.commit()
     except Exception as e:
+        print(e)
         return {"error": "Internal server error"}, 500
 
     # return answer from AI and 200 status code        
