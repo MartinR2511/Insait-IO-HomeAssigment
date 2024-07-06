@@ -14,7 +14,7 @@ services:
       - ${DB_PORT}:${DB_PORT}
 
   flaskapp:
-    build: ./flaskapp
+    build: .
     environment:
         - OPEN_AI_SECRET_KEY=${OPEN_AI_SECRET_KEY}
         - DB_PROTOCOL=${DB_PROTOCOL}
