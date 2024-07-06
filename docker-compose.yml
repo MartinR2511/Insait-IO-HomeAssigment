@@ -20,7 +20,7 @@ services:
         - DB_PROTOCOL=${DB_PROTOCOL}
         - DB_NAME=${DB_NAME}
         - DB_PORT=${DB_PORT}
-        - DB_IPADDRESS=${DB_IPADDRESS}
+        - DB_IPADDRESS=db
         - DB_USERNAME=${DB_USERNAME}
         - DB_PASSWORD=${DB_PASSWORD}
     ports:

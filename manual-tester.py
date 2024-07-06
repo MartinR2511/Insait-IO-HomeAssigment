@@ -12,4 +12,4 @@ data = {
 response = requests.post(url, json=data)
 
 # Print the response
-print(response.json())
+print(response.text)
