@@ -8,6 +8,7 @@ You can read about it in the file [ASSIGMENT.MD](ASSIGMENT.MD).
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
   - [Usage](#usage)
+  - [Development Testing](#development-testing)
   - [General Explanaition](#general-explanaition)
   - [Versions](#versions)
 
@@ -62,6 +63,16 @@ then you can run the script and see the printed output.
 
 ```
 python manual-tester.py
+```
+## Development Testing
+tests scripts are located at ./flaskapp/tests
+to run the scripts follow the following steps:
+Note: for the tests to work correctly the db service has to be running
+and all the secrets should be configured.
+```
+cd flaskapp
+
+python -m pytest
 ```
 
 ## General Explanaition
