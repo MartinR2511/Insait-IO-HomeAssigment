@@ -5,7 +5,6 @@ The '/ask' endpoint is responsible for processing questions and returning answer
 """
 from app import app
 
-
 def test_correct_input():
     """
     Test case to check the behavior of the '/ask' endpoint when provided with a correct input.

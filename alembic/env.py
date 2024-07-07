@@ -1,7 +1,10 @@
 from logging.config import fileConfig
-
+import os
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
+
+from dotenv import load_dotenv
+load_dotenv()
 
 from alembic import context
 
@@ -24,7 +27,13 @@ target_metadata = None
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
-
+DB_PROTOCOL = str(os.environ.get("DB_PROTOCOL"))
+DB_NAME = str(os.environ.get("DB_NAME"))
+DB_PORT = str(os.environ.get("DB_PORT"))
+DB_IPADDRESS = str(os.environ.get("DB_IPADDRESS"))
+DB_USERNAME = str(os.environ.get("DB_USERNAME"))
+DB_PASSWORD = str(os.environ.get("DB_PASSWORD"))
+config.set_main_option("sqlalchemy.url", DB_PROTOCOL+"://"+DB_USERNAME+":"+DB_PASSWORD+"@"+DB_IPADDRESS+":"+DB_PORT+"/"+DB_NAME)
 
 def run_migrations_offline() -> None:
     """Run migrations in 'offline' mode.

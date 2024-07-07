@@ -6,7 +6,7 @@ import config
 
 AIClient = OpenAIClient(config.OPEN_AI_SECRET_KEY)
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://{username}:{password}@{ipaddress}:{port}/{database_name}'.format(username=config.DB_USERNAME, password=config.DB_PASSWORD, ipaddress=config.DB_IPADDRESS, port=config.DB_PORT, database_name=config.DB_NAME)
+app.config['SQLALCHEMY_DATABASE_URI'] = '{protocol}://{username}:{password}@{ipaddress}:{port}/{database_name}'.format(protocol=config.DB_PROTOCOL, username=config.DB_USERNAME, password=config.DB_PASSWORD, ipaddress=config.DB_IPADDRESS, port=config.DB_PORT, database_name=config.DB_NAME)
 db.init_app(app)
     
 @app.route("/ask", methods=["POST"])
@@ -34,12 +34,13 @@ def ask():
 
     # get answer from AI
     answer = AIClient.ask(question)
-    row = Questions(question, answer, timestamp)
+    row = Questions(question, answer, timestamp, request.remote_addr)
 
     try:
         db.session.add(row)
         db.session.commit()
     except Exception as e:
+        print(e)
         return {"error": "Internal server error"}, 500
 
     # return answer from AI and 200 status code        
