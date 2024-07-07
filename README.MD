@@ -36,7 +36,7 @@ To install the project, follow these steps:
             ```
 5. Install the project dependencies:
         ```
-        pip install -r flaskapp/requirements.txt -r alembic/requirements.txt
+        pip install -r requirements.txt
         ```
 6. Configure Project Secrets:
    
@@ -55,7 +55,7 @@ To install the project, follow these steps:
 
 ## Usage
 the /ask endpoint is working and you can post request any question you would like.
-for easier testing the /ask endpoint, you have been provided a [manual-test.py](manual-test.py) file in the root of the repository. This file is intended to make it easier for you to manually test the endpoint and verify its functionality.
+for easier testing of the /ask endpoint, you have been provided a [manual-test.py](manual-test.py) file in the root of the repository. This file is intended to make it easier for you to manually test the endpoint and verify its functionality.
 
 To use the manual-test.py file, you can edit the question variable at line 6.
 then you can run the script and see the printed output.
@@ -69,7 +69,7 @@ python manual-tester.py
 * the alembic migraition files are located in the alembic/ folder.
 * pytest test files are located in the flaskapp/tests/ folder.
 * i have used the lastest postgres image for the database container.
-* for ease of use i have left the db secrets in the .env file
+* for ease of use i have left some db secrets in the .env file
 
 ## Versions
 * V1.0.0
